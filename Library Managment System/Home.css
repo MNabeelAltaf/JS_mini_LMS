@@ -1,0 +1,389 @@
+*{
+    box-sizing: border-box;
+    font-family: Calibri;
+}
+
+a:link
+{
+    
+    color: gray;
+    text-decoration: none;
+}
+
+.home{
+    text-decoration: underline;
+}
+
+
+a:hover
+{
+
+    text-decoration: underline;
+    color:blue;
+
+}
+
+
+.menu{
+
+    display: flex;
+    margin: 10px;
+    padding: 1%;
+    
+    flex: row wrap;
+    font-style: italic;
+    font-size: 1.5vw;
+
+}
+
+.home{
+
+    padding: 0.5% 1%;
+    
+}
+
+.authors{
+   
+    padding: 0.5% 1%;
+}
+
+.publisher{
+   
+    padding: 0.5% 1%;
+}
+
+.about{
+   
+    padding: 0.5% 1%;
+}
+
+/* media query of menu */
+@media screen and (max-width:500px) {
+    .menu{
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        
+    }
+
+    .home, .authors, .publisher, .about
+    {
+        font-size: 4vw;
+    }
+    
+}
+
+.mainImg{
+
+    display: flex;
+    margin: 10px;
+    padding: 1%;
+    height: 100vh;
+    width: auto;
+   
+    justify-content: center;
+    align-items: center;
+
+    flex: row wrap;
+filter: none;
+
+}
+
+.center_mainImg
+{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+   
+    color:rgb(0, 0, 0);
+    text-shadow:  0 0 7px rgb(129, 131, 116);
+    font-size: 3vw;
+    font-style: normal;
+font-family: 'Times New Roman', Times, serif;
+filter: brightness(100px);
+    position: absolute;
+    top: 30%;
+    bottom: 60%;
+    margin-left:0 ;
+    margin-right: 0;
+
+}
+
+.center2_mainImg
+{
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    font-size: 2vw;
+    font-style: italic;
+    text-align: center;
+    color:rgb(17, 9, 9);
+    text-shadow:  0 0 7px rgb(30, 34, 6);
+filter: brightness(100px);  
+
+    position: absolute;
+    top: 40%;
+    bottom: 20%;
+    margin-left:30% ;
+    margin-right: 30%;
+
+}
+
+/* media query for Main image heading + text */
+@media screen and (max-width:600px) {
+
+    .center_mainImg
+    {
+        margin-top: 15%;
+        font-size: large;
+        margin: 15%;
+    }
+    
+    .center2_mainImg{
+        
+        margin-top:15% ;
+        font-size: 100%;
+        width:80%;
+
+    }
+
+}
+
+/* ----------------------- */
+
+.list
+{
+    display: flex;
+    flex: row wrap;
+   
+    margin: 0 5px 5px 5px;
+    padding: 2%;
+    height: 10vh;
+    justify-content: center;
+    align-items:  center;
+    font-size: 3vw;
+    font-style: italic;
+    font-weight: bold;
+    color: gray;
+}
+
+
+.table{
+    display: flex;
+    margin-top: 5%;
+font-size: medium;
+    margin: 5%;
+}
+
+
+.form{
+
+    display: grid; 
+ grid-template-columns: auto   auto;
+grid-template-rows: auto auto auto;
+ 
+background-color: aqua;
+
+background: lightblue url("images/BookImg.jpg") no-repeat fixed center;
+
+
+
+    margin: 10px;
+
+    padding:2%;
+    height: 50vh; 
+
+   grid-gap: 5px;
+
+    align-items: center;
+    justify-content: center;
+    
+}
+
+
+.item1{
+   
+    width:20vw;
+    height: auto;
+    font-size: 1.7vw;
+    
+}
+
+.button{
+    
+/* padding-left: 93%; */
+
+
+padding: 2%;
+margin-top: 10%;
+
+margin-left:70%;
+font-size: 1.7vw;
+
+
+}
+
+.submitt
+{
+    padding-left:5%; background-color:#cacab89d; width: 5vw; height: auto; text-align: center; font-size: 1.3vw;
+}
+
+.footer{
+    display:flow-root;
+  
+    width: auto;
+    margin: 5%;
+    margin-top: 10%;
+    justify-content: center;
+    align-items: center;
+    height:auto;
+    text-align: center;
+    font-size: 1.5vw;
+  
+}
+
+
+/*  media query for screen size less than 700px */
+/* media query for Add books txtx, submit,delete btns, table n footer */
+@media screen and (max-width:750px) {
+
+    th{
+        font-size: 3vw;
+    width: 100%;
+    }
+    
+    .footer{
+        font-size: 100%;
+    }
+
+    .list{
+        font-size: 100%;
+    }
+
+    .item1
+    {
+        font-size: 100%;
+    
+    }
+
+    /* .button
+    {
+        margin-right: 50%;
+      
+    } */
+
+    .form{
+     
+    display: flex;
+    flex-direction: column;
+    width: auto;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+       
+    }
+
+    .button{
+        display: flex;
+        flex-direction: column;
+        width: auto;
+        margin: 0;
+        padding: 0;
+        
+    
+        justify-content: center;
+        height:15vw;
+        font-size: 5vw;
+    }
+
+    .submitt{
+        width: 100%;
+        height: 10vh;
+        font-size: 2vw;
+    }
+
+    .table{
+        width: auto;
+        height: 50vh;
+    }
+    .decor , th, td{
+        width: 50%;
+        font-size: 2vw;
+    }
+   
+}
+
+
+/* media query for Add books txtx, submit,delete btns, table n footer */
+@media screen and (max-width:550px) {
+
+    th{
+        font-size: 3vw;
+    width: 100%;
+    }
+    
+    .footer{
+        font-size: 100%;
+    }
+
+    .list{
+        font-size: 100%;
+    }
+
+    .item1
+    {
+        font-size: 100%;
+    
+    }
+
+    /* .button
+    {
+        margin-right: 50%;
+      
+    } */
+
+    .form{
+     
+    display: flex;
+    flex-direction: column;
+    width: auto;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+       
+    }
+
+    .button{
+        display: flex;
+        flex-direction: column;
+        width: auto;
+        margin: 0;
+        padding: 0;
+        
+    
+        justify-content: center;
+        height:15vw;
+        font-size: 5vw;
+    }
+
+    .submitt{
+        width: 100%;
+        height: 15vh;
+        font-size: 5vw;
+    }
+
+    .table{
+        width: auto;
+        height: 50vh;
+    }
+    .decor , th, td{
+        width: 50%;
+        font-size: 3vw;
+    }
+   
+    
+}
+
+
