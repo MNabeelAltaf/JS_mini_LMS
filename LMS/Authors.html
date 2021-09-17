@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Authors</title>
+
+    <link rel="Stylesheet" href="Authors.css">
+
+</head>
+<body>
+    
+
+<div class="menu">
+
+        <div class="home"> <a href="Home.html"> Home  </a>  </div>
+        <div class="authors"> <a href="Authors.html" class="author"> Authors 
+         </a> </div>
+        <div class="publisher"> <a href="Publisher.html"> Publishers  </a> </div>
+        <div class="about"> <a href="About.html"> About  </a> </div>
+  
+  
+</div>
+
+<div class="mainImg">
+
+    <img src="images/authors_background.jpg" alt="Image unavailable" width="100%" height="100%">
+
+   
+    <p class="center2_mainImg">
+
+        Authorship confers credit and has important academic, social, and financial implications. Authorship also implies responsibility and accountability for published work
+    </p>
+
+
+</div>
+
+<div class="Names">
+
+    <p style="font-size: 3vw ;">Authors</p>
+
+</div>
+
+<hr>
+
+<div class="A_table">
+
+    <table id="author_table" class="decor">
+        <tr>
+            <th>Author</th>
+            <th>Book</th>
+            <th></th>
+        </tr>
+    </table>
+
+</div>
+
+<div class="display_btn">
+    <input type="button" class="dis_btn" onclick="show_Data();" value="Display Records">
+</div>
+
+<hr>
+
+<!-- footer -->
+
+<div class="footer">
+
+    <h4>Contact Us</h4> 
+    <i>+92-000000000 </i> 
+     
+    <br>
+    
+    <h4>Email</h4> 
+    <i>
+    <a href="mailto:LibraryManagmentTeam@outlook.com" target="_blank" title="Send Mail">
+        LibraryManagmentTeam@outlook.com  
+    </a>
+    </i>
+    
+    <br>
+    
+    <h4>Website</h4>
+    <i>
+    <a href="#">
+         www.LMS.com
+    </a>
+    </i>
+    <br>
+    
+    
+    </div>
+
+
+
+
+
+    <!-- JS code  -->
+
+<script>
+
+var auth_table = document.getElementById("author_table");
+
+var retrived_data_LS = new Array();
+
+retrived_data_LS = JSON.parse(localStorage.getItem("records"));
+
+
+var temp_array = new Array();
+
+
+
+//get  data from LS
+function getData()
+{
+     var retrived_data = JSON.parse(localStorage.getItem("records"));
+  
+     //checking array is empty or not
+     if(retrived_data != null)
+     {
+          temp_array = retrived_data;
+     }
+
+}
+
+
+
+//show data after retriving data from LS
+function show_Data()
+{
+     
+
+     getData();
+
+     var row=1;
+     var table_empty = document.getElementById("author_table");
+
+     for(let i = 0; i < temp_array.length; i++)
+     {
+
+       var addingRows = table_empty.insertRow();
+
+       var tcell5,tcell6,tcell7,tcell8,Action_Cell;
+
+       tcell5=addingRows.insertCell(0);
+       tcell6=addingRows.insertCell(1);
+    //    tcell7=addingRows.insertCell(2);
+    //    tcell8=addingRows.insertCell(3);
+       Action_Cell=addingRows.insertCell(2);
+
+
+       //adding Local storage array data to cells
+       //adding LS key to cells
+       // cells hasBeen shift to show Author name first then Book name
+       tcell6.innerHTML = temp_array[i].Book_name;
+       tcell5.innerHTML = temp_array[i].Aut_name;
+    //    tcell7.innerHTML = local_array[i].Pub_name;
+    //    tcell8.innerHTML = local_array[i].Pub_date;
+       Action_Cell.innerHTML = temp_array[i] =`<button onclick="delete_Data(this)">Delete</button>`;
+
+     }
+
+}
+
+
+
+//table row deleted from table n LS when button is clicked
+
+
+var delete_on_action = new Array(); 
+
+function delete_Data(th)
+{
+    var r = th.parentElement.parentElement;
+    var i = r.rowIndex;
+
+    var configur = confirm("Delete Single Author, will delete all corresponding books of authors. Do you want to delete this record?");
+    if(configur == true)
+    {
+       
+        document.getElementById("author_table").deleteRow(i);
+
+        var r = th.parentElement.parentElement;  
+
+        delete_on_action = JSON.parse(localStorage.getItem("records"));
+
+          
+
+     var cle1 = r.cells[0].innerHTML;
+     var cle2 = r.cells[1].innerHTML;
+  // var cle3 =r.cells[2].innerHTML;
+
+  console.log(cle1);
+  
+
+
+  var t = document.getElementById("author_table");
+        
+console.log(`ouside ${delete_on_action}`);
+
+        Object.entries(delete_on_action).forEach(([key, Value]) => {
+            
+            if(Value.Aut_name == cle1)
+            {
+                console.log(cle1);
+                console.log(key);
+
+            for(let x=0; x<delete_on_action.length;x++)
+            {
+               
+                delete_on_action.splice(key,1);
+               
+            } 
+              
+            }
+
+        });
+        
+        console.log(delete_on_action);
+        record = delete_on_action;
+        localStorage.setItem("records",JSON.stringify(record));   
+
+        temp_array=delete_on_action;
+
+}
+
+}
+
+</script>
+
+
+</body>
+</html>

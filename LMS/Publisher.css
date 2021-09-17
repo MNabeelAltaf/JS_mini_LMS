@@ -1,0 +1,274 @@
+*{
+    box-sizing: border-box;
+    font-family: Calibri;
+}
+
+a
+{
+    
+    color: gray;
+    text-decoration: none;
+}
+
+.publish{
+    text-decoration: underline;
+    
+}
+
+a:hover
+{
+
+    text-decoration: underline;
+    color:blue;
+
+}
+
+.menu{
+
+    display: flex;
+    margin: 10px;
+    padding: 1%;
+    
+    flex: row wrap;
+    font-style: italic;
+    font-size: 1.5vw;
+
+}
+
+.home{
+
+    padding: 0.5% 1%;
+    
+}
+
+.authors{
+   
+    padding: 0.5% 1%;
+}
+
+.publisher{
+
+    
+    padding: 0.5% 1%;
+    text-decoration: underline;
+}
+
+.about{
+   
+    padding: 0.5% 1%;
+}
+
+/*  */
+
+table, th, td{
+        
+          
+    border-collapse: collapse;
+    text-align: center;   
+} 
+
+td{
+    font-size: 1.5vw;
+   
+}
+
+tr{
+    font-size: 1.1vw;
+    background-color: hsla(180, 53%, 67%, 0.486);
+
+}
+
+tr:nth-child(1)
+{
+   background-color: rgb(192, 201, 198);
+   font-weight: bold;
+ 
+  
+}
+
+tr:nth-child(even)
+{
+   background-color: #48af8dd7;
+}
+
+
+.A_table
+{
+    
+        display: flex;
+        margin-top: 5%;
+        font-size: medium;
+        text-align: center;
+        justify-content: center;
+        margin: 5%;
+    /* background-color: antiquewhite; */
+    
+}
+
+.decor , th, td{
+    width: 50%;
+    font-size: 2vw;
+    text-align: center;
+}
+
+/*  */
+
+.display_btn
+{
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+   width: auto;
+    height: 20vh;
+
+}
+
+.dis_btn{
+    font-size: 1.3vw;
+    height: 7vh;
+    width: 10vw;
+    text-align: center;
+    text-decoration: none;
+    background-color: hsla(0, 5%, 78%, 0.699);
+    border-radius: 10px;
+
+    transition-duration: 0.4s;
+}
+
+.dis_btn:hover{
+    text-decoration: underline;
+    background-color: rgb(143, 143, 238);
+}
+
+
+
+/*  */
+
+.footer{
+    display:flow-root;
+  
+    width: auto;
+    margin: 5%;
+    margin-top: 10%;
+    justify-content: center;
+    align-items: center;
+    height:auto;
+    text-align: center;
+    font-size: 1.5vw;
+  
+}
+
+
+/* media query of menu */
+@media screen and (max-width:500px) {
+    .menu{
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        
+    }
+
+    .home, .authors, .publisher, .about
+    {
+        font-size: 4vw;
+    }
+    
+}
+
+.mainImg{
+
+  
+    display: flex;
+    margin: 10px;
+    padding: 1%;
+    height: 100vh;
+    width: auto;
+   
+    justify-content: center;
+    align-items: center;
+
+    flex: row wrap;
+filter: none;
+
+}
+
+.center2_mainImg
+{
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    font-size: 2vw;
+    font-style: italic;
+    font-weight: bold;
+    text-align: center;
+
+  color: #ffffff;
+  
+  
+  text-shadow:  0 0 7px rgb(13, 14, 10);
+    
+
+
+    position: absolute;
+    top: 55%;
+    bottom: 20%;
+    margin-left:30% ;
+    margin-right: 30%;
+
+}
+
+.Names{
+    font-size: 100%;
+}
+
+.footer{
+    font-size: 100%;
+}
+
+/* media query for Main image heading + text */
+@media screen and (max-width:600px) {
+
+    .center_mainImg
+    {
+        margin-top: 15%;
+        font-size: large;
+        margin: 15%;
+    }
+    
+    .center2_mainImg{
+        
+        margin-top:15% ;
+        font-size: 100%;
+        width:80%;
+
+    }
+
+}
+
+.Names{
+
+    display: flex;
+    flex: row wrap;
+   
+    margin: 0 5px 5px 5px;
+    padding: 2%;
+    height: 10vh;
+    justify-content: center;
+    align-items:  center;
+    font-size: 100%;
+    font-style: italic;
+    font-weight: bold;
+    color: gray;
+
+
+}
+
+
+.footer{
+    font-size: 100%;
+}
+
+

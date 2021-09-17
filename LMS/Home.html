@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Library Managment System</title>
+
+    <link rel="Stylesheet" href="Home.css"> 
+
+<style>
+     table, th, td{
+        
+          
+          border-collapse: collapse;
+          text-align: center;   
+     } 
+
+     td{
+          font-size: 1.5vw;
+         
+     }
+
+     tr{
+          font-size: 1.5vw;
+          background-color: hsla(180, 53%, 67%, 0.486);
+
+     }
+
+    tr:nth-child(1)
+    {
+         background-color: rgb(192, 201, 198);
+         font-weight: bold;
+       
+        
+    }
+
+    tr:nth-child(even)
+    {
+         background-color: #48af8dd7;
+    }
+
+</style>
+
+
+</head>
+<body>
+
+  
+<div class="menu">
+
+      <div class="home"> <a href="Home.html" class="home"> Home  </a>  </div>
+      <div class="authors"> <a href="Authors.html"> Authors  </a> </div>
+      <div class="publisher"> <a href="Publisher.html"> Publishers  </a> </div>
+      <div class="about"> <a href="About.html"> About  </a> </div>
+
+
+</div>
+
+<div class="mainImg">
+
+   
+    <img src="images/library_background_cover2.jpg" alt="image unavailable" width="100%;" height="100%;">
+
+    <h2 class="center_mainImg">Library Managment System</h2>
+    <p class="center2_mainImg">
+        
+        Library Service plateform that is fully accessible via a web browser. Library Management System features are recognised worldwide for continual incremental improvements and discovery tools - no matter the format.
+
+    </p>
+
+</div>
+
+<div class="list">
+
+   Add Books
+
+</div>
+
+
+<form class="form" onsubmit="Validate_and_Add_Data(); return false;"  required> 
+
+
+     <div class="item1">Book Name</div>
+     <div class="item1">
+
+               <input style="width:20vw; height: 6vh; font-size: 1.5vw; background-color: rgb(236, 227, 227); border-radius: 10px;" type="text" placeholder="Enter Book Name" id="Bname" required
+               >
+     </div>
+
+
+     <div class="item1">Author Name</div>
+     <div class="item1">
+
+        
+               <input style="width:20vw; height: 6vh; font-size: 1.5vw; background-color: rgb(236, 227, 227); border-radius: 10px;" type="text" placeholder="Enter Author Name" id="Aname" required
+               >
+         
+          
+     </div>
+
+     <div class="item1">Publisher Name</div>
+     <div class="item1">
+
+        
+          <input style="width:20vw; height: 6vh; font-size: 1.5vw; background-color: rgb(236, 227, 227); border-radius: 10px;" type="text" placeholder="Enter Publisher Name" id="Pname" required >
+         
+
+     </div>
+
+
+     <div class="item1">Publication Date</div>
+     <div class="item1">
+
+         
+          <input style="width:20vw; height: 6vh; font-size: 1.5vw; background-color: rgb(236, 227, 227); border-radius: 10px;" type="date" placeholder="Enter Publication Date" id="Pdate" required >
+         
+
+
+     </div>
+
+    <div class="button">
+     
+    <input class="submitt" type="submit" value="Submit"
+
+     > 
+
+    <input type="button" value="Delete All" onclick="delete_All();">
+
+
+
+    </div>
+ 
+
+</form> 
+
+
+<!-- ------------------------------------ -->
+
+ <div class="table">
+
+      <table id="tbl" class="decor" style="width:100%;">
+           <tr>
+                
+                <th>Book Name</th>
+                <th>Author Name</th>
+                <th>Publisher Name</th>
+                <th>Publication Date</th>
+                <th>Actions</th>
+
+           </tr>
+      </table>
+
+</div> 
+
+<hr>
+
+<div class="footer">
+
+<h4>Contact Us</h4> 
+<i>+92-000000000 </i> 
+ 
+<br>
+
+<h4>Email</h4> 
+<i>
+<a href="mailto:LibraryManagmentTeam@outlook.com" target="_blank" title="Send Mail">
+    LibraryManagmentTeam@outlook.com  
+</a>
+</i>
+
+<br>
+
+<h4>Website</h4>
+<i>
+<a href="#">
+     www.LMS.com
+</a>
+</i>
+<br>
+
+
+</div>
+
+
+
+<!-- JS code for Validation and adding data which will be added to table -->
+
+<script>
+
+// show_Data(); // stored data first display in table after page refresh
+
+
+
+const BookName=[];
+const AuthorName=[];
+const PublisherName=[];
+const PublicationDate =[];
+const action_cell=[];
+
+let index=0;
+let rowPosition=1;
+
+var local_array = new Array(); //array to get stored data from LS
+
+function Validate_and_Add_Data()
+{
+
+     getData();  // getting data from local storage 
+
+
+     //adding text field data to table 
+
+     const emptyTable = document.getElementById("tbl");
+
+     const addRows = emptyTable.insertRow(rowPosition);
+
+
+     var cell1;
+     var cell2;
+     var cell3;
+     var cell4;
+     var Action_Cell;
+
+     cell1=addRows.insertCell(0);
+     cell2=addRows.insertCell(1);
+     cell3=addRows.insertCell(2);
+     cell4=addRows.insertCell(3);
+     Action_Cell = addRows.insertCell(4);
+
+     const Bname = document.getElementById("Bname").value;
+     const Aname = document.getElementById("Aname").value;
+     const Pname = document.getElementById("Pname").value;
+     const Pdate = document.getElementById("Pdate").value;
+
+
+
+     rowPosition++;
+     index++;
+
+
+
+//Now adding and validating data to local storage
+
+
+let records = new Array();
+
+//first reading previous data stored inside array of Local Storage
+
+//if array(Local Storage) is filled with data then get(return) it otherwise return empty array if no data in it.
+
+records = JSON.parse(localStorage.getItem("records")) ? JSON.parse(localStorage.getItem("records")) : [];
+
+if(records.some((check) =>
+{return check.Book_name.toUpperCase() == Bname.toUpperCase() && 
+check.Book_name.toLowerCase() == Bname.toLowerCase()}))
+
+{
+
+     alert("Book Already exist");
+
+}
+else
+{
+
+  alert("Added Sucessfully!");  
+     
+records.push({
+
+     "Book_name":Bname,
+     "Aut_name":Aname,
+     "Pub_name":Pname,
+     "Pub_date":Pdate
+})
+
+//local storage.set item takes 2 argument, one is key and other is value
+records=localStorage.setItem("records",JSON.stringify(records));
+
+
+//if data not already exist then Add to Table 
+
+     cell1.innerHTML = BookName[index]=Bname;
+     cell2.innerHTML = AuthorName[index]=Aname;
+     cell3.innerHTML = PublisherName[index]=Pname;
+     cell4.innerHTML = PublicationDate[index]=Pdate;
+Action_Cell.innerHTML = action_cell[index] ="<button>Edit</button> <button>Delete</button>";
+
+}
+
+
+}
+
+ show_Data(); // stored data first display in table after page refresh
+
+//function to get data from Local Storage
+function getData()
+{
+     var retrive_data = JSON.parse(localStorage.getItem("records"));
+  
+     //checking array is empty or not
+     if(retrive_data != null)
+     {
+          local_array = retrive_data;
+     }
+
+}
+
+
+//function to Show data on Table after refreshing page
+function show_Data()
+{
+     
+
+     getData();
+
+     var row=1;
+     var table_empty = document.getElementById("tbl");
+
+     for(let i = 0; i < local_array.length; i++)
+     {
+
+       var addingRows = table_empty.insertRow();
+
+       var tcell5,tcell6,tcell7,tcell8,Action_Cell;
+
+       tcell5=addingRows.insertCell(0);
+       tcell6=addingRows.insertCell(1);
+       tcell7=addingRows.insertCell(2);
+       tcell8=addingRows.insertCell(3);
+       Action_Cell=addingRows.insertCell(4);
+
+       //adding Local storage array data to cells
+       //adding LS key to cells
+       tcell5.innerHTML = local_array[i].Book_name;
+       tcell6.innerHTML = local_array[i].Aut_name;
+       tcell7.innerHTML = local_array[i].Pub_name;
+       tcell8.innerHTML = local_array[i].Pub_date;
+       Action_Cell.innerHTML = action_cell[index] =`<button onclick="edit_data(this)">Edit</button>   <button onclick="delete_data(this)">Delete</button>`;
+
+     }
+
+}
+
+//function to delete all data from Local Storage
+function delete_All()
+{
+     var confirmation = confirm("Do you want to Delete All data?");
+
+     if(confirmation == true)
+     {
+          localStorage.clear();
+          alert("Data Deleted Sucessfully!");
+     }
+     else
+     {
+          alert("Action Cancelled");
+
+     }
+}
+
+
+
+//function to edit data when edit button from table is clicked
+
+var selected_rows;
+
+var edited_dataArray = new Array();
+
+function edit_data(th)
+{
+
+     selected_rows = th.parentElement.parentElement;
+
+     //for storing row index which will be edited
+     var edit_row_index=selected_rows.rowIndex;
+
+     document.getElementById("Bname").value = selected_rows.cells[0].innerHTML;
+     document.getElementById("Aname").value = selected_rows.cells[1].innerHTML;
+     document.getElementById("Pname").value = selected_rows.cells[2].innerHTML;
+     document.getElementById("Pdate").value = selected_rows.cells[3].innerHTML;
+
+edited_dataArray=JSON.parse(localStorage.getItem("records"));
+
+edited_dataArray.splice(edit_row_index-1,1);
+records=edited_dataArray;
+localStorage.setItem("records",JSON.stringify(records));
+
+//
+local_array=edit_row_index;
+
+}
+
+
+
+
+
+//function to delete data when delete button from table is clicked
+
+var delete_row;
+
+var delete_dataArray = new Array();
+
+function delete_data(th)
+{
+
+ 
+
+    var delete_row_index = th.parentElement.parentElement.rowIndex;
+
+   var confirmation_message = confirm("Do you want to delete this record?");
+   
+   if(confirmation_message == true)
+   {
+
+     delete_row = th.parentElement.parentElement;
+
+     document.getElementById("tbl").deleteRow(delete_row.rowIndex);
+
+     var delete_dataArray = JSON.parse(localStorage.getItem("records"));
+
+   var cel1,cel2,cel3,cel4;
+   
+   cel1=delete_row.cells[0].innerHTML;
+   cel2=delete_row.cells[1].innerHTML;
+   cel3=delete_row.cells[2].innerHTML;
+   cel4=delete_row.cells[3].innerHTML;
+
+
+
+   //checking whatever data exit in array(LS array) or not
+   if(delete_dataArray.some((chek) =>
+   {return chek.Book_name == cel1 && chek.Aut_name == cel2 && chek.Pub_name == cel3 && chek.Pub_date == cel4}))
+   {
+
+        var positionn = delete_row_index-1;
+        delete_dataArray.splice(positionn,1);
+
+        records = delete_dataArray;
+
+        localStorage.setItem("records",JSON.stringify(records));
+
+        //
+        local_array = delete_dataArray;
+   }
+
+   }
+
+   else
+   {
+        alert("Action Canelled");
+   }
+
+
+     
+}
+
+
+
+
+</script>
+
+
+</body>
+</html>
